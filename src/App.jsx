@@ -126,53 +126,36 @@ function App() {
           transition={{ repeat: Infinity, duration: 15, ease: 'linear' }}
         >
           <span className="marquee-text">20+ YEARS OF EXCELLENCE •</span>
-          <span className="marquee-text">HOSPITAL CONTRACTS •</span>
-          <span className="marquee-text">SOCIETY BUILDINGS •</span>
-          <span className="marquee-text">COMMERCIAL FLATS •</span>
+          <span className="marquee-text">HOTEL CONTRACTS •</span>
+          <span className="marquee-text">MULTI-STORY CONTRACTS •</span>
+          <span className="marquee-text">FACTORY CONTRACTS •</span>
           <span className="marquee-text">20+ YEARS OF EXCELLENCE •</span>
-          <span className="marquee-text">HOSPITAL CONTRACTS •</span>
-          <span className="marquee-text">SOCIETY BUILDINGS •</span>
-          <span className="marquee-text">COMMERCIAL FLATS •</span>
+          <span className="marquee-text">HOTEL CONTRACTS •</span>
+          <span className="marquee-text">MULTI-STORY CONTRACTS •</span>
+          <span className="marquee-text">FACTORY CONTRACTS •</span>
         </motion.div>
       </div>
 
       {/* About Section */}
       <section className="section container">
-        <div className="about-grid">
-          <motion.div 
-            className="about-image-container hover-target"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={revealVariants}
-          >
-            {/* NOTE: User should replace this with the actual image provided */}
-            <img 
-              src="/images/saurabh.jpg" 
-              alt="Saurabh Katiyar" 
-              className="about-image" 
-              onError={(e) => {
-                e.target.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop';
-              }}
-            />
-          </motion.div>
-          
+        <div className="about-grid" style={{ display: 'flex', justifyContent: 'center' }}>
           <motion.div 
             className="about-text"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={revealVariants}
+            style={{ textAlign: 'center', maxWidth: '900px' }}
           >
             <h2>Powering the Future, <br/>Building the Present.</h2>
-            <p>
+            <p style={{ fontSize: '1.5rem' }}>
               With over 15+ years of dedicated experience, Saurabh Katiyar has established himself as a leading force in large-scale electrical contracting and building construction.
             </p>
-            <p>
-              Specializing in complex, high-stakes environments like major hospitals, residential societies, and commercial flats, we deliver safety, precision, and unparalleled expertise.
+            <p style={{ fontSize: '1.5rem' }}>
+              Specializing in complex, high-stakes environments like major hotels, multi-story residential societies, and large-scale factories, we deliver safety, precision, and unparalleled expertise.
             </p>
             
-            <div className="stats">
+            <div className="stats" style={{ justifyContent: 'center', marginTop: '4rem' }}>
               <div className="stat-item">
                 <h3>20+</h3>
                 <span>Years Experience</span>
@@ -208,13 +191,13 @@ function App() {
             variants={revealVariants}
           >
             <div className="project-image-wrapper">
-              <img src="/images/hospital.jpg" alt="Hospital Electrical Contract" className="project-image" />
+              <img src="/images/hotel.jpg" alt="Hotel Electrical Contracts" className="project-image" />
             </div>
             <div className="project-overlay">
-              <span className="project-category"><Zap size={16} style={{display:'inline', marginRight:'8px'}}/> Clinical Precision</span>
-              <h3 className="project-title">Hospital Electrical Contracts</h3>
+              <span className="project-category"><Building2 size={16} style={{display:'inline', marginRight:'8px'}}/> Hospitality Infrastructure</span>
+              <h3 className="project-title">Hotel Contracts</h3>
               <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
-                Executing life-critical electrical infrastructure for major healthcare facilities. From backup power systems to intricate surgical room wiring, ensuring zero-downtime reliability.
+                Executing sophisticated electrical infrastructure for luxury hotels. Ensuring seamless power delivery, elegant architectural lighting, and absolute reliability for guest experiences.
               </p>
             </div>
           </motion.div>
@@ -228,13 +211,33 @@ function App() {
             variants={revealVariants}
           >
             <div className="project-image-wrapper">
-              <img src="/images/building.jpg" alt="Society Building Projects" className="project-image" />
+              <img src="/images/multistory.jpg" alt="Multi-Story Electrical Contracts" className="project-image" />
             </div>
             <div className="project-overlay">
               <span className="project-category" style={{ color: 'var(--text-primary)'}}><Building2 size={16} style={{display:'inline', marginRight:'8px'}}/> Urban Development</span>
-              <h3 className="project-title">Society & Flat Construction</h3>
+              <h3 className="project-title">Multi-Story Contracts</h3>
               <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
-                Comprehensive electrical planning and execution for large-scale residential societies. Delivering modern, smart-home ready infrastructure for thousands of residents.
+                Comprehensive electrical planning and execution for large-scale multi-story buildings and residential societies. Delivering modern, smart-home ready infrastructure for thousands of residents.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Project 3 */}
+          <motion.div 
+            className="project-item hover-target"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={revealVariants}
+          >
+            <div className="project-image-wrapper">
+              <img src="/images/factory.jpg" alt="Factory Electrical Contracts" className="project-image" />
+            </div>
+            <div className="project-overlay">
+              <span className="project-category" style={{ color: 'var(--accent-color)'}}><Zap size={16} style={{display:'inline', marginRight:'8px'}}/> Industrial Power</span>
+              <h3 className="project-title">Factory Contracts</h3>
+              <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
+                Heavy-duty electrical installations for massive industrial factory floors. From high-voltage machinery wiring to robust control panels, powering industrial growth safely.
               </p>
             </div>
           </motion.div>
@@ -250,9 +253,14 @@ function App() {
           variants={revealVariants}
         >
           <h2 className="contact-title">Let's build something <br/> <span style={{ color: 'var(--text-primary)'}}>Extraordinary</span></h2>
-          <a href="tel:8700322743" className="contact-number hover-target">
-            870 032 2743
-          </a>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+            <a href="tel:+918700322743" className="contact-number hover-target">
+              +91 870 032 2743
+            </a>
+            <a href="tel:+917976911880" className="contact-number hover-target">
+              +91 7976 911 880
+            </a>
+          </div>
           <div style={{ marginTop: '3rem' }}>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '1rem' }}>Available for major electrical & building contracts</p>
             <button 
