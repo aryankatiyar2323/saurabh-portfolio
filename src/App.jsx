@@ -5,6 +5,7 @@ import { Phone, ArrowRight, Zap, Building2, HardHat } from 'lucide-react';
 import Cursor from './components/Cursor';
 import ContactModal from './components/ContactModal';
 import Preloader from './components/Preloader';
+import AnimatedText from './components/AnimatedText';
 import './index.css';
 
 function App() {
@@ -81,7 +82,7 @@ function App() {
             animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            Electrical Contractor & Builder
+            <AnimatedText text="Premier Electrical Contractor" className="hover-target" />
           </motion.h2>
           <motion.h1 
             className="hero-title"
@@ -89,7 +90,7 @@ function App() {
             animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            SAURABH <br /> KATIYAR
+            <AnimatedText text="SAURABH" className="hover-target" /> <br /> <AnimatedText text="KATIYAR" className="hover-target" />
           </motion.h1>
           <motion.button 
             onClick={() => setIsContactModalOpen(true)}
@@ -147,9 +148,11 @@ function App() {
             variants={revealVariants}
             style={{ textAlign: 'center', maxWidth: '900px' }}
           >
-            <h2>Powering the Future, <br/>Building the Present.</h2>
-            <p style={{ fontSize: '1.5rem' }}>
-              With over 15+ years of dedicated experience, Saurabh Katiyar has established himself as a leading force in large-scale electrical contracting and building construction.
+            <h2>
+              <AnimatedText text="Powering the Future." className="hover-target" />
+            </h2>
+            <p style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>
+              <AnimatedText text="With over 15+ years of dedicated experience, Saurabh Katiyar has established himself as a leading force in large-scale electrical contracting." className="hover-target" />
             </p>
             <p style={{ fontSize: '1.5rem' }}>
               Specializing in complex, high-stakes environments like major hotels, multi-story residential societies, and large-scale factories, we deliver safety, precision, and unparalleled expertise.
@@ -252,17 +255,24 @@ function App() {
           viewport={{ once: true }}
           variants={revealVariants}
         >
-          <h2 className="contact-title">Let's build something <br/> <span style={{ color: 'var(--text-primary)'}}>Extraordinary</span></h2>
+          <h2 className="contact-title">
+            <AnimatedText text="Let's spark something" className="hover-target" /> <br/> 
+            <span style={{ color: 'var(--text-primary)'}}>
+              <AnimatedText text="Extraordinary" className="hover-target" />
+            </span>
+          </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-            <a href="tel:+918700322743" className="contact-number hover-target">
-              +91 870 032 2743
+            <a href="tel:+918700322743" className="contact-number hover-target" style={{ textDecoration: 'none' }}>
+              <AnimatedText text="+91 870 032 2743" className="hover-target" />
             </a>
-            <a href="tel:+917976911880" className="contact-number hover-target">
-              +91 7976 911 880
+            <a href="tel:+917976911880" className="contact-number hover-target" style={{ textDecoration: 'none' }}>
+              <AnimatedText text="+91 7976 911 880" className="hover-target" />
             </a>
           </div>
           <div style={{ marginTop: '3rem' }}>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '1rem' }}>Available for major electrical & building contracts</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '1rem' }}>
+              <AnimatedText text="Available for major electrical contracts" className="hover-target" />
+            </p>
             <button 
               onClick={() => setIsContactModalOpen(true)}
               className="hover-target" 

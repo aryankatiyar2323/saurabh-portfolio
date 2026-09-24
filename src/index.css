@@ -43,22 +43,41 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background-color: var(--accent-blue);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-  transition: width 0.3s, height 0.3s, background-color 0.3s;
+  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 .custom-cursor.hovering {
   width: 80px;
   height: 80px;
-  background-color: var(--accent-color);
-  mix-blend-mode: normal;
-  opacity: 0.5;
+  background: rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.5);
+}
+
+/* Animated Text for Individual Letter Hover */
+.animated-text {
+  display: inline-block;
+}
+.animated-text .char {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease, text-shadow 0.2s ease;
+  transform-origin: bottom center;
+}
+.animated-text .char:hover {
+  transform: scale(1.4) translateY(-8px);
+  color: var(--accent-blue);
+  text-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+  z-index: 10;
+  position: relative;
 }
 
 /* Utilities */
