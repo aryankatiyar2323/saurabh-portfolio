@@ -19,11 +19,18 @@ body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   overflow-x: hidden;
-  cursor: none;
 }
 
-a, button {
-  cursor: none;
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, .hover-target {
+    cursor: none;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -136,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .marquee-text {
   display: inline-block;
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 5vw, 3rem);
   font-weight: 700;
   font-family: 'Outfit', sans-serif;
   padding-right: 2rem;
@@ -184,7 +191,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .stats {
   display: flex;
-  gap: 3rem;
+  flex-wrap: wrap;
+  gap: 2rem;
   margin-top: 3rem;
 }
 .stat-item h3 {
@@ -246,8 +254,9 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 .project-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
 }
 .project-category {
   color: var(--accent-color);
@@ -268,7 +277,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
 }
 .contact-number {
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(2rem, 8vw, 8rem);
   font-weight: 800;
   color: var(--text-primary);
   text-decoration: none;
@@ -292,7 +301,11 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
   }
   .about-image-container {
-    height: 50vh;
+    width: 100%;
+    height: auto;
+  }
+  .project-item {
+    height: 60vh;
   }
   .project-overlay {
     padding: 2rem;
