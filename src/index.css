@@ -382,8 +382,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-container {
-  background: rgba(30, 30, 30, 0.4);
-  backdrop-filter: blur(25px);
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
@@ -469,7 +469,7 @@ h1, h2, h3, h4, h5, h6 {
 .modal-right {
   flex: 1;
   padding: 4rem;
-  background: rgba(17, 17, 17, 0.7);
+  background: rgba(5, 5, 5, 0.95);
   border-radius: 0 20px 20px 0;
 }
 .modal-right h3 {
@@ -500,9 +500,16 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 10px 0;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: inherit;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.1s ease, text-shadow 0.1s ease, letter-spacing 0.1s ease;
+}
+
+.immersive-form-grid .typing-pop {
+  transform: scale(1.01) translateY(-2px);
+  text-shadow: 0 0 10px var(--accent-teal);
+  letter-spacing: 0.5px;
+  color: var(--accent-teal);
 }
 
 .immersive-form-grid select {

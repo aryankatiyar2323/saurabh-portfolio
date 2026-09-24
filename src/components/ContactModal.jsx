@@ -5,6 +5,13 @@ import AnimatedText from './AnimatedText';
 
 export default function ContactModal({ isOpen, onClose }) {
   const [formState, setFormState] = useState('idle');
+  const [typingField, setTypingField] = useState(null);
+
+  const handleInput = (e) => {
+    const id = e.target.id;
+    setTypingField(id);
+    setTimeout(() => setTypingField(null), 150);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,22 +65,22 @@ export default function ContactModal({ isOpen, onClose }) {
                   <h3><AnimatedText text="Contact Us" /></h3>
                   <form onSubmit={handleSubmit} className="immersive-form-grid">
                     <div className="input-group">
-                      <input type="text" id="firstName" required placeholder=" " className="hover-target" />
+                      <input type="text" id="firstName" required placeholder=" " className={`hover-target ${typingField === 'firstName' ? 'typing-pop' : ''}`} onChange={handleInput} />
                       <label htmlFor="firstName">First Name</label>
                       <div className="input-highlight"></div>
                     </div>
                     <div className="input-group">
-                      <input type="text" id="lastName" required placeholder=" " className="hover-target" />
+                      <input type="text" id="lastName" required placeholder=" " className={`hover-target ${typingField === 'lastName' ? 'typing-pop' : ''}`} onChange={handleInput} />
                       <label htmlFor="lastName">Last Name</label>
                       <div className="input-highlight"></div>
                     </div>
                     <div className="input-group">
-                      <input type="tel" id="phone" required placeholder=" " className="hover-target" />
+                      <input type="tel" id="phone" required placeholder=" " className={`hover-target ${typingField === 'phone' ? 'typing-pop' : ''}`} onChange={handleInput} />
                       <label htmlFor="phone">Phone Number</label>
                       <div className="input-highlight"></div>
                     </div>
                     <div className="input-group">
-                      <input type="email" id="email" required placeholder=" " className="hover-target" />
+                      <input type="email" id="email" required placeholder=" " className={`hover-target ${typingField === 'email' ? 'typing-pop' : ''}`} onChange={handleInput} />
                       <label htmlFor="email">Email Address</label>
                       <div className="input-highlight"></div>
                     </div>
@@ -88,7 +95,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       <div className="input-highlight"></div>
                     </div>
                     <div className="input-group full-width">
-                      <textarea id="message" required placeholder=" " rows="3" className="hover-target"></textarea>
+                      <textarea id="message" required placeholder=" " rows="3" className={`hover-target ${typingField === 'message' ? 'typing-pop' : ''}`} onChange={handleInput}></textarea>
                       <label htmlFor="message">Message</label>
                       <div className="input-highlight"></div>
                     </div>
