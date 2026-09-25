@@ -56,7 +56,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     <AnimatedText text="Ready to power up your next big project? We specialize in large-scale electrical contracting for Hotels, Multi-Story Buildings, and Factories. Let's connect." />
                   </p>
                   <a href="tel:+918700322743" className="contact-badge hover-target" style={{ textDecoration: 'none' }}>
-                     <Zap size={16} /> Contact Us: +91 870 032 2743
+                     <Zap size={16} /> Contact Us
                   </a>
                 </div>
 
