@@ -433,6 +433,16 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.2);
 }
+.light-mode .custom-cursor {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.light-mode .custom-cursor.hovering {
+  background: rgba(0, 119, 204, 0.15);
+  border-color: rgba(0, 119, 204, 0.5);
+  box-shadow: 0 0 20px rgba(0, 119, 204, 0.3);
+}
 .light-mode .modal-container {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(0, 0, 0, 0.1);

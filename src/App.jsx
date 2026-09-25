@@ -78,12 +78,14 @@ const ProjectItem = ({ src, title, category, description, Icon }) => {
             style={{ y, scale: 1.15 }} 
           />
         </div>
-        <div className="project-overlay" style={{ transform: "translateZ(60px)" }}>
-          <span className="project-category"><Icon size={16} style={{display:'inline', marginRight:'8px'}}/> {category}</span>
-          <h3 className="project-title">{title}</h3>
-          <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
-            {description}
-          </p>
+        <div className="project-overlay">
+          <div style={{ transform: "translateZ(60px)", transformStyle: "preserve-3d" }}>
+            <span className="project-category"><Icon size={16} style={{display:'inline', marginRight:'8px'}}/> {category}</span>
+            <h3 className="project-title">{title}</h3>
+            <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
+              {description}
+            </p>
+          </div>
         </div>
       </motion.div>
     </motion.div>
