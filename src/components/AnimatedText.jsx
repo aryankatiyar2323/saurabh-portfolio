@@ -5,7 +5,7 @@ export default function AnimatedText({ text, className }) {
   let globalIndex = 0;
 
   return (
-    <span className={`animated-text ${className || ''}`} style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0.25em' }}>
+    <span className={`animated-text ${className || ''}`}>
       {words.map((word, wordIndex) => (
         <span key={wordIndex} className="word" style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
           {word.split('').map((char, index) => {
@@ -21,7 +21,7 @@ export default function AnimatedText({ text, className }) {
             );
           })}
         </span>
-      ))}
+      )).reduce((prev, curr) => [prev, ' ', curr])}
     </span>
   );
 }
