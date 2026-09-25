@@ -70,22 +70,26 @@ const ProjectItem = ({ src, title, category, description, Icon }) => {
       }}
     >
       <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d", width: '100%', height: '100%' }}>
-        <div className="project-image-wrapper">
-          <motion.img 
-            src={src} 
-            alt={title} 
-            className="project-image" 
-            style={{ y, scale: 1.15 }} 
-          />
-        </div>
-        <div className="project-overlay">
-          <div style={{ transform: "translateZ(60px)", transformStyle: "preserve-3d" }}>
-            <span className="project-category"><Icon size={16} style={{display:'inline', marginRight:'8px'}}/> {category}</span>
-            <h3 className="project-title">{title}</h3>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
-              {description}
-            </p>
+        {/* Layer 1: Clipped Background and Gradient */}
+        <div className="project-layer-bg">
+          <div className="project-image-wrapper">
+            <motion.img 
+              src={src} 
+              alt={title} 
+              className="project-image" 
+              style={{ y, scale: 1.15 }} 
+            />
           </div>
+          <div className="project-overlay"></div>
+        </div>
+        
+        {/* Layer 2: 3D Text Content */}
+        <div className="project-content" style={{ transform: "translateZ(60px)" }}>
+          <span className="project-category"><Icon size={16} style={{display:'inline', marginRight:'8px'}}/> {category}</span>
+          <h3 className="project-title">{title}</h3>
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
+            {description}
+          </p>
         </div>
       </motion.div>
     </motion.div>
