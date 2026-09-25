@@ -132,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 .hero-title {
-  font-size: clamp(3rem, 8vw, 10rem);
+  font-size: clamp(2.5rem, 10vw, 10rem);
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.02em;
@@ -386,6 +386,15 @@ h1, h2, h3, h4, h5, h6 {
   }
   .project-overlay {
     padding: 2rem;
+  }
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .modal-glow {
+    display: none;
   }
 }
 
@@ -695,22 +704,31 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (hover: none) and (pointer: coarse) {
   .animated-text .char {
-    animation: text-wave 3s infinite ease-in-out;
+    animation: text-wave 4s infinite ease-in-out;
     animation-delay: calc(var(--char-index, 0) * 0.1s);
+  }
+  
+  .contact-badge, .submit-btn, .hero-content button {
+    animation: mobile-btn-pulse 2s infinite alternate;
   }
 }
 
 @keyframes text-wave {
-  0%, 100% {
+  0%, 40%, 100% {
     transform: translateY(0) scale(1);
     color: inherit;
     text-shadow: none;
   }
-  50% {
-    transform: scale(1.2) translateY(-4px);
+  20% {
+    transform: scale(1.15) translateY(-3px);
     color: var(--accent-blue);
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
   }
+}
+
+@keyframes mobile-btn-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4); }
+  100% { box-shadow: 0 0 15px 5px rgba(0, 229, 255, 0.1); }
 }
 
 /* 3D Preloader Styles */
