@@ -1,12 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Phone, ArrowRight, Zap, Building2, HardHat } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence, useInView, useSpring, useMotionValue, animate } from 'framer-motion';
+import { Phone, ArrowRight, Zap, Building2, HardHat, Power } from 'lucide-react';
 import Cursor from './components/Cursor';
 import ContactModal from './components/ContactModal';
 import Preloader from './components/Preloader';
 import AnimatedText from './components/AnimatedText';
 import './index.css';
+
+const Counter = ({ from = 0, to, duration = 2, suffix = '' }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const [displayValue, setDisplayValue] = useState(from);
+
+  useEffect(() => {
+    if (inView) {
+      const controls = animate(from, to, {
+        duration,
+        onUpdate(value) {
+          setDisplayValue(Math.floor(value));
+        }
+      });
+      return () => controls.stop();
+    }
+  }, [inView, from, to, duration]);
+
+  return <span ref={ref}>{displayValue}{suffix}</span>;
+}
 
 const ProjectItem = ({ src, title, category, description, Icon }) => {
   const ref = useRef(null);
@@ -17,10 +37,30 @@ const ProjectItem = ({ src, title, category, description, Icon }) => {
   
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
+  // 3D Tilt Logic
+  const springConfig = { damping: 20, stiffness: 150 };
+  const mouseX = useSpring(useMotionValue(0), springConfig);
+  const mouseY = useSpring(useMotionValue(0), springConfig);
+  const rotateX = useTransform(mouseY, [-300, 300], [10, -10]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-10, 10]);
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  };
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
     <motion.div 
       ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className="project-item hover-target"
+      style={{ perspective: 1200 }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -29,22 +69,62 @@ const ProjectItem = ({ src, title, category, description, Icon }) => {
         visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
       }}
     >
-      <div className="project-image-wrapper">
-        <motion.img 
-          src={src} 
-          alt={title} 
-          className="project-image" 
-          style={{ y, scale: 1.15 }} 
-        />
-      </div>
-      <div className="project-overlay">
-        <span className="project-category"><Icon size={16} style={{display:'inline', marginRight:'8px'}}/> {category}</span>
-        <h3 className="project-title">{title}</h3>
-        <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
-          {description}
-        </p>
-      </div>
+      <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d", width: '100%', height: '100%' }}>
+        <div className="project-image-wrapper">
+          <motion.img 
+            src={src} 
+            alt={title} 
+            className="project-image" 
+            style={{ y, scale: 1.15 }} 
+          />
+        </div>
+        <div className="project-overlay" style={{ transform: "translateZ(60px)" }}>
+          <span className="project-category"><Icon size={16} style={{display:'inline', marginRight:'8px'}}/> {category}</span>
+          <h3 className="project-title">{title}</h3>
+          <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
+            {description}
+          </p>
+        </div>
+      </motion.div>
     </motion.div>
+  );
+};
+
+const Testimonials = () => {
+  const [width, setWidth] = useState(0);
+  const carousel = useRef();
+
+  useEffect(() => {
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+  }, []);
+
+  const reviews = [
+    { name: "Rajeev Sharma", text: "Saurabh and his team handled the entire electrical infrastructure for our new housing society. Absolute professionalism and flawless execution." },
+    { name: "Amit Desai", text: "We hired them for our factory's heavy-duty panel installations. They completed the work ahead of schedule with zero safety compromises. Highly recommended." },
+    { name: "Vikram Singh", text: "The architectural lighting and smart wiring for our boutique hotel was done by this team. Excellent attention to detail and premium finish." },
+    { name: "Suresh Gupta", text: "Best electrical contractors in the business. Very transparent pricing and they strictly adhere to all government safety standards." }
+  ];
+
+  return (
+    <section className="section container" style={{ padding: '5vh 0 15vh 0' }}>
+      <div className="projects-header" style={{ marginBottom: '3rem' }}>
+        <h2>Client <span style={{ color: 'var(--accent-teal)' }}>Reviews</span></h2>
+      </div>
+      <motion.div ref={carousel} className="carousel-wrapper hover-target" style={{ overflow: "hidden", cursor: "grab" }} whileTap={{ cursor: "grabbing" }}>
+        <motion.div 
+          drag="x"
+          dragConstraints={{ right: 0, left: -width }}
+          style={{ display: "flex", gap: "2rem" }}
+        >
+          {reviews.map((review, i) => (
+            <motion.div key={i} className="review-card" style={{ minWidth: '400px', background: 'rgba(255,255,255,0.05)', padding: '2.5rem', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6', fontSize: '1.2rem' }}>"{review.text}"</p>
+              <h4 style={{ color: 'var(--text-primary)', fontSize: '1.3rem' }}>- {review.name}</h4>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </section>
   );
 };
 
@@ -59,6 +139,15 @@ function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [showWhatsApp, setShowWhatsApp] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
+  
+  useEffect(() => {
+    if (isLightMode) {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  }, [isLightMode]);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -223,11 +312,11 @@ function App() {
             
             <div className="stats" style={{ justifyContent: 'center', marginTop: '4rem' }}>
               <div className="stat-item">
-                <h3>20+</h3>
+                <h3><Counter from={0} to={20} suffix="+" /></h3>
                 <span>Years Experience</span>
               </div>
               <div className="stat-item">
-                <h3>100+</h3>
+                <h3><Counter from={0} to={100} suffix="+" /></h3>
                 <span>Major Projects</span>
               </div>
             </div>
@@ -271,6 +360,8 @@ function App() {
           />
         </div>
       </section>
+
+      <Testimonials />
 
       {/* Contact Section */}
       <section id="contact" className="contact-section">
@@ -316,6 +407,15 @@ function App() {
       </footer>
 
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+
+      {/* Theme Toggle Button */}
+      <button 
+        onClick={() => setIsLightMode(!isLightMode)} 
+        className="theme-toggle hover-target"
+        aria-label="Toggle Theme"
+      >
+        <Power size={24} />
+      </button>
 
       {/* Floating WhatsApp Button */}
       <AnimatePresence>

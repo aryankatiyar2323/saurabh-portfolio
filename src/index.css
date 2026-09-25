@@ -9,6 +9,32 @@
   --accent-teal: #83d8c7;
 }
 
+/* Light Mode Variables */
+.light-mode {
+  --bg-color: #f4f6f8;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --accent-color: #b8860b;
+  --accent-blue: #0077cc;
+  --accent-teal: #208b79;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-teal);
+  border-radius: 10px;
+  border: 3px solid var(--bg-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -123,6 +149,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   background: radial-gradient(circle at center, transparent 0%, var(--bg-color) 100%);
   z-index: 0;
+}
+.light-mode .hero-overlay {
+  background: radial-gradient(circle at center, transparent 0%, rgba(244, 246, 248, 0.8) 100%);
 }
 .hero-content {
   text-align: center;
@@ -276,6 +305,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 4rem;
   z-index: 1;
 }
+.light-mode .project-overlay {
+  background: linear-gradient(to top, rgba(244, 246, 248, 0.95) 0%, rgba(244, 246, 248, 0.5) 60%, transparent 100%);
+}
 .project-title {
   font-size: clamp(1.8rem, 5vw, 3rem);
   margin-bottom: 0.5rem;
@@ -373,7 +405,56 @@ h1, h2, h3, h4, h5, h6 {
   100% { opacity: 0.3; }
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: all 0.3s ease;
+}
+.theme-toggle:hover {
+  background: var(--accent-color);
+  color: #000;
+  transform: scale(1.1);
+}
+.light-mode .theme-toggle {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.light-mode .modal-container {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.light-mode .modal-left {
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+.light-mode .modal-right {
+  background: rgba(240, 242, 245, 0.95);
+}
+.light-mode .review-card {
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
 @media (max-width: 768px) {
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
   .about-grid {
     grid-template-columns: 1fr;
   }
