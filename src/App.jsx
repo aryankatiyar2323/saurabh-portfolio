@@ -58,10 +58,25 @@ function App() {
   const containerRef = useRef(null);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [showWhatsApp, setShowWhatsApp] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight * 0.7) {
+        setShowWhatsApp(true);
+      } else {
+        setShowWhatsApp(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -303,15 +318,23 @@ function App() {
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
 
       {/* Floating WhatsApp Button */}
-      <a 
-        href="https://wa.me/918700322743" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="whatsapp-float hover-target"
-        aria-label="Chat on WhatsApp"
-      >
-        <WhatsAppIcon />
-      </a>
+      <AnimatePresence>
+        {showWhatsApp && (
+          <motion.a 
+            href="https://wa.me/918700322743" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="whatsapp-float hover-target"
+            aria-label="Chat on WhatsApp"
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 20 }}
+            transition={{ duration: 0.4, type: "spring" }}
+          >
+            <WhatsAppIcon />
+          </motion.a>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
