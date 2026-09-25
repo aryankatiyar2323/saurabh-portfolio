@@ -313,11 +313,11 @@ function App() {
             <div className="stats" style={{ justifyContent: 'center', marginTop: '4rem' }}>
               <div className="stat-item">
                 <h3><Counter from={0} to={20} suffix="+" /></h3>
-                <span>Years Experience</span>
+                <span className="stat-label">Years Experience</span>
               </div>
               <div className="stat-item">
                 <h3><Counter from={0} to={100} suffix="+" /></h3>
-                <span>Major Projects</span>
+                <span className="stat-label">Major Projects</span>
               </div>
             </div>
           </motion.div>

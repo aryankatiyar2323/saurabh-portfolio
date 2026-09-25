@@ -248,13 +248,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 3rem;
 }
 .stat-item h3 {
-  font-size: 4rem;
+  font-size: clamp(3rem, 10vw, 5rem);
   color: var(--accent-blue);
   line-height: 1;
   margin-bottom: 0.5rem;
 }
-.stat-item span {
-  font-size: 0.9rem;
+.stat-item .stat-label {
+  font-size: clamp(0.8rem, 3vw, 1rem);
   color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
