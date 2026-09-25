@@ -2,6 +2,79 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, Zap } from 'lucide-react';
 import AnimatedText from './AnimatedText';
+import Select from 'react-select';
+
+const projectOptions = [
+  { value: 'hotel', label: 'Hotel Contracts' },
+  { value: 'multistory', label: 'Multi-Story Contracts' },
+  { value: 'factory', label: 'Factory Contracts' },
+  { value: 'other', label: 'Other Commercial Works' }
+];
+
+const customSelectStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderBottom: state.isFocused ? '1px solid var(--accent-teal)' : '1px solid rgba(255, 255, 255, 0.1)',
+    borderRadius: 0,
+    boxShadow: 'none',
+    padding: '0',
+    minHeight: 'auto',
+    cursor: 'none'
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    padding: '10px 0',
+  }),
+  input: (provided) => ({
+    ...provided,
+    color: 'var(--text-primary)',
+    margin: 0,
+    padding: 0
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: 'var(--text-primary)',
+    fontSize: '1.1rem',
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: 'var(--text-secondary)',
+    fontSize: '1.1rem',
+  }),
+  indicatorSeparator: () => ({ display: 'none' }),
+  dropdownIndicator: (provided) => ({
+    ...provided,
+    color: 'var(--text-secondary)',
+    padding: '10px 0',
+    '&:hover': { color: 'var(--accent-teal)' }
+  }),
+  menu: (provided) => ({
+    ...provided,
+    backgroundColor: '#111',
+    border: '1px solid rgba(255,255,255,0.1)',
+    backdropFilter: 'blur(10px)',
+    borderRadius: '8px',
+    zIndex: 100,
+    marginTop: '4px'
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected 
+      ? 'var(--accent-teal)' 
+      : state.isFocused 
+        ? 'rgba(0, 229, 255, 0.1)' 
+        : 'transparent',
+    color: state.isSelected ? '#000' : 'var(--text-primary)',
+    cursor: 'none',
+    padding: '12px 20px',
+    '&:active': {
+      backgroundColor: 'var(--accent-teal)',
+      color: '#000'
+    }
+  })
+};
 
 export default function ContactModal({ isOpen, onClose }) {
   const [formState, setFormState] = useState('idle');
@@ -84,14 +157,15 @@ export default function ContactModal({ isOpen, onClose }) {
                       <label htmlFor="email">Email Address</label>
                       <div className="input-highlight"></div>
                     </div>
-                    <div className="input-group full-width">
-                      <select id="projectType" required className="hover-target" defaultValue="">
-                        <option value="" disabled>Select Project Type</option>
-                        <option value="hotel">Hotel Contracts</option>
-                        <option value="multistory">Multi-Story Contracts</option>
-                        <option value="factory">Factory Contracts</option>
-                        <option value="other">Other Commercial Works</option>
-                      </select>
+                    <div className="input-group full-width" style={{ position: 'relative', zIndex: 100 }}>
+                      <Select 
+                        options={projectOptions}
+                        styles={customSelectStyles}
+                        placeholder="Select Project Type"
+                        className="hover-target"
+                        classNamePrefix="react-select"
+                        isSearchable={false}
+                      />
                       <div className="input-highlight"></div>
                     </div>
                     <div className="input-group full-width">
