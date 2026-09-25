@@ -703,26 +703,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .animated-text .char {
-    animation: text-wave 4s infinite ease-in-out;
-    animation-delay: calc(var(--char-index, 0) * 0.1s);
-  }
-  
   .contact-badge, .submit-btn, .hero-content button {
     animation: mobile-btn-pulse 2s infinite alternate;
-  }
-}
-
-@keyframes text-wave {
-  0%, 40%, 100% {
-    transform: translateY(0) scale(1);
-    color: inherit;
-    text-shadow: none;
-  }
-  20% {
-    transform: scale(1.15) translateY(-3px);
-    color: var(--accent-blue);
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
   }
 }
 
