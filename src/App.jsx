@@ -8,6 +8,46 @@ import Preloader from './components/Preloader';
 import AnimatedText from './components/AnimatedText';
 import './index.css';
 
+const ProjectItem = ({ src, title, category, description, Icon }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  return (
+    <motion.div 
+      ref={ref}
+      className="project-item hover-target"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={{
+        hidden: { opacity: 0, scale: 0.95, y: 50 },
+        visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+      }}
+    >
+      <div className="project-image-wrapper">
+        <motion.img 
+          src={src} 
+          alt={title} 
+          className="project-image" 
+          style={{ y, scale: 1.15 }} 
+        />
+      </div>
+      <div className="project-overlay">
+        <span className="project-category"><Icon size={16} style={{display:'inline', marginRight:'8px'}}/> {category}</span>
+        <h3 className="project-title">{title}</h3>
+        <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
+          {description}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
 function App() {
   const containerRef = useRef(null);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -186,65 +226,27 @@ function App() {
         </motion.div>
 
         <div className="project-list">
-          {/* Project 1 */}
-          <motion.div 
-            className="project-item hover-target"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={revealVariants}
-          >
-            <div className="project-image-wrapper">
-              <img src="/images/hotel.jpg" alt="Hotel Electrical Contracts" className="project-image" />
-            </div>
-            <div className="project-overlay">
-              <span className="project-category"><Building2 size={16} style={{display:'inline', marginRight:'8px'}}/> Hospitality Infrastructure</span>
-              <h3 className="project-title">Hotel Contracts</h3>
-              <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
-                Executing sophisticated electrical infrastructure for luxury hotels. Ensuring seamless power delivery, elegant architectural lighting, and absolute reliability for guest experiences.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Project 2 */}
-          <motion.div 
-            className="project-item hover-target"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={revealVariants}
-          >
-            <div className="project-image-wrapper">
-              <img src="/images/multistory.jpg" alt="Multi-Story Electrical Contracts" className="project-image" />
-            </div>
-            <div className="project-overlay">
-              <span className="project-category" style={{ color: 'var(--text-primary)'}}><Building2 size={16} style={{display:'inline', marginRight:'8px'}}/> Urban Development</span>
-              <h3 className="project-title">Multi-Story Contracts</h3>
-              <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
-                Comprehensive electrical planning and execution for large-scale multi-story buildings and residential societies. Delivering modern, smart-home ready infrastructure for thousands of residents.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Project 3 */}
-          <motion.div 
-            className="project-item hover-target"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={revealVariants}
-          >
-            <div className="project-image-wrapper">
-              <img src="/images/factory.jpg" alt="Factory Electrical Contracts" className="project-image" />
-            </div>
-            <div className="project-overlay">
-              <span className="project-category" style={{ color: 'var(--accent-color)'}}><Zap size={16} style={{display:'inline', marginRight:'8px'}}/> Industrial Power</span>
-              <h3 className="project-title">Factory Contracts</h3>
-              <p style={{ color: '#ccc', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
-                Heavy-duty electrical installations for massive industrial factory floors. From high-voltage machinery wiring to robust control panels, powering industrial growth safely.
-              </p>
-            </div>
-          </motion.div>
+          <ProjectItem 
+            src="/images/hotel.jpg"
+            title="Hotel Contracts"
+            category="Hospitality Infrastructure"
+            description="Executing sophisticated electrical infrastructure for luxury hotels. Ensuring seamless power delivery, elegant architectural lighting, and absolute reliability for guest experiences."
+            Icon={Building2}
+          />
+          <ProjectItem 
+            src="/images/multistory.jpg"
+            title="Multi-Story Contracts"
+            category="Urban Development"
+            description="Comprehensive electrical planning and execution for large-scale multi-story buildings and residential societies. Delivering modern, smart-home ready infrastructure for thousands of residents."
+            Icon={Building2}
+          />
+          <ProjectItem 
+            src="/images/factory.jpg"
+            title="Factory Contracts"
+            category="Industrial Power"
+            description="Heavy-duty electrical installations for massive industrial factory floors. From high-voltage machinery wiring to robust control panels, powering industrial growth safely."
+            Icon={Zap}
+          />
         </div>
       </section>
 
