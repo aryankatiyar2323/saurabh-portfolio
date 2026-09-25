@@ -703,7 +703,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .contact-badge, .submit-btn, .hero-content button {
+  .contact-badge, .submit-btn {
     animation: mobile-btn-pulse 2s infinite alternate;
   }
 }
