@@ -7,6 +7,8 @@
   --accent-color: #d4af37;
   --accent-blue: #00e5ff;
   --accent-teal: #83d8c7;
+  --menu-bg: #111111;
+  --modal-bg: rgba(15, 15, 15, 0.85);
 }
 
 /* Light Mode Variables */
@@ -17,6 +19,8 @@
   --accent-color: #b8860b;
   --accent-blue: #0077cc;
   --accent-teal: #208b79;
+  --menu-bg: #f4f6f8;
+  --modal-bg: rgba(255, 255, 255, 0.95);
 }
 
 /* Custom Scrollbar */
@@ -161,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 .hero-title {
-  font-size: clamp(2.5rem, 10vw, 10rem);
+  font-size: clamp(2.5rem, 8vw, 7rem);
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.02em;
@@ -496,6 +500,17 @@ h1, h2, h3, h4, h5, h6 {
   .modal-glow {
     display: none;
   }
+  .mega-footer-title {
+    font-size: clamp(3rem, 12vw, 4rem) !important;
+  }
+  .mega-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center;
+  }
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* Update Modal Styles */
@@ -548,7 +563,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-container {
-  background: rgba(15, 15, 15, 0.85);
+  background: var(--modal-bg);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -783,14 +798,15 @@ h1, h2, h3, h4, h5, h6 {
   }
   .modal-right {
     border-radius: 0 0 20px 20px;
-    padding: 2rem;
+    padding: 1.5rem;
   }
   .modal-left {
     border-right: none;
-    padding: 2rem;
+    padding: 1.5rem;
   }
   .modal-container {
-    height: 90vh;
+    max-height: 90vh;
+    height: auto;
     overflow-y: auto;
   }
   .immersive-form-grid {

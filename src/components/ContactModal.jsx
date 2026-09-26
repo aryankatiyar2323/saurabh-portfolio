@@ -52,7 +52,7 @@ const customSelectStyles = {
   }),
   menu: (provided) => ({
     ...provided,
-    backgroundColor: '#111',
+    backgroundColor: 'var(--menu-bg)',
     border: '1px solid rgba(255,255,255,0.1)',
     backdropFilter: 'blur(10px)',
     borderRadius: '8px',

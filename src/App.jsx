@@ -28,6 +28,36 @@ const Counter = ({ from = 0, to, duration = 2, suffix = '' }) => {
   return <span ref={ref}>{displayValue}{suffix}</span>;
 }
 
+const MagneticButton = ({ children, className, onClick, style }) => {
+  const ref = useRef(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouse = (e) => {
+    const { clientX, clientY } = e;
+    const { height, width, left, top } = ref.current.getBoundingClientRect();
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
+    setPosition({ x: middleX * 0.4, y: middleY * 0.4 });
+  };
+
+  const reset = () => setPosition({ x: 0, y: 0 });
+
+  return (
+    <motion.button
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      className={className}
+      onClick={onClick}
+      style={style}
+    >
+      {children}
+    </motion.button>
+  );
+};
+
 const ProjectItem = ({ src, title, category, description, Icon }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -95,6 +125,36 @@ const ProjectItem = ({ src, title, category, description, Icon }) => {
     </motion.div>
   );
 };
+
+const Services = () => (
+  <section className="section container services-section">
+    <div className="projects-header" style={{ marginBottom: '4rem', textAlign: 'center' }}>
+      <h2>Our <span style={{ color: 'var(--accent-teal)' }}>Services</span></h2>
+    </div>
+    <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem' }}>
+       <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
+         <Zap size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
+         <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Residential Wiring</h4>
+         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Complete home automation and safe residential grid setup.</p>
+       </div>
+       <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
+         <Building2 size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
+         <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Commercial Panels</h4>
+         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Heavy-duty electrical panels and commercial grade distribution.</p>
+       </div>
+       <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
+         <HardHat size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
+         <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Industrial Maintenance</h4>
+         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>24/7 industrial maintenance to prevent factory downtime.</p>
+       </div>
+       <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
+         <Power size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
+         <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Smart Lighting</h4>
+         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Architectural lighting and smart home ecosystem integrations.</p>
+       </div>
+    </div>
+  </section>
+);
 
 const Testimonials = () => {
   const [width, setWidth] = useState(0);
@@ -249,30 +309,33 @@ function App() {
           >
             <AnimatedText text="SAURABH" className="hover-target" /> <br /> <AnimatedText text="KATIYAR" className="hover-target" />
           </motion.h1>
-          <motion.button 
-            onClick={() => setIsContactModalOpen(true)}
-            className="hover-target"
+          <motion.div
             initial={{ opacity: 0 }}
             animate={!isLoading ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            style={{ 
-              marginTop: '2rem', 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '10px',
-              textDecoration: 'none',
-              color: 'var(--accent-color)',
-              fontSize: '1.2rem',
-              fontWeight: 'bold',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              background: 'transparent',
-              border: 'none',
-              cursor: 'none'
-            }}
+            style={{ marginTop: '2rem' }}
           >
-            Start a Project <ArrowRight size={20} />
-          </motion.button>
+            <MagneticButton 
+              onClick={() => setIsContactModalOpen(true)}
+              className="hover-target"
+              style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '10px',
+                textDecoration: 'none',
+                color: 'var(--accent-color)',
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'none'
+              }}
+            >
+              Start a Project <ArrowRight size={20} />
+            </MagneticButton>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -329,6 +392,8 @@ function App() {
           </motion.div>
         </div>
       </section>
+
+      <Services />
 
       {/* Projects Showcase */}
       <section className="section container">
@@ -407,9 +472,35 @@ function App() {
         </motion.div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} Saurabh Katiyar. All Rights Reserved.</p>
+      {/* Mega Footer */}
+      <footer className="footer mega-footer" style={{ padding: '8rem 5vw 2rem 5vw', background: 'var(--bg-color)', borderTop: '1px solid rgba(255,255,255,0.1)', marginTop: '0' }}>
+        <div className="mega-footer-content container" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+           <h2 className="mega-footer-title hover-target" style={{ fontSize: 'clamp(4rem, 8vw, 8rem)', lineHeight: 1, color: 'var(--text-primary)', transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent-teal)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
+             HAVE A PROJECT<br/>IN MIND?
+           </h2>
+           <div className="mega-footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', textAlign: 'left', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '4rem' }}>
+              <div className="footer-col">
+                 <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Contact</h4>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>contact@saurabhkatiyar.com</p>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>+91 870 032 2743</p>
+                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>+91 7976 911 880</p>
+              </div>
+              <div className="footer-col">
+                 <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Location</h4>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>124 Industrial Area</p>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Sector 5, New Delhi</p>
+                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>India - 110001</p>
+              </div>
+              <div className="footer-col">
+                 <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Business Details</h4>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>GSTIN: 07AAECE1234B1Z5</p>
+                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>Lic No: EL-998822</p>
+              </div>
+           </div>
+        </div>
+        <div className="footer-bottom" style={{ textAlign: 'center', marginTop: '6rem', color: 'var(--text-secondary)' }}>
+           <p>© {new Date().getFullYear()} Saurabh Katiyar. All Rights Reserved.</p>
+        </div>
       </footer>
 
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
