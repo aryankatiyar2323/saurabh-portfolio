@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import AnimatedText from './AnimatedText';
 
 // Dynamically import all images in the folder so Vite can bundle them
 const modules = import.meta.glob('/src/assets/ezgif-4899d5f40f5e8bc1-jpg/*.jpg', { eager: true });
@@ -92,7 +93,7 @@ export default function Preloader({ onComplete }) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          style={{ position: 'relative', width: '350px', height: '350px', marginBottom: '3rem', mixBlendMode: 'multiply' }}
+          style={{ position: 'relative', width: '300px', height: '300px', marginBottom: '2rem' }}
         >
            <img 
              src={frameUrls[frameIndex]} 
@@ -102,23 +103,23 @@ export default function Preloader({ onComplete }) {
         </motion.div>
       )}
 
+      <motion.h1 
+        className="hero-title"
+        layoutId="hero-title"
+        style={{ margin: 0, textAlign: 'center', color: '#000', position: 'relative', zIndex: 2 }}
+      >
+        <AnimatedText text="SAURABH" className="hover-target" /> <br /> <AnimatedText text="KATIYAR" className="hover-target" />
+      </motion.h1>
+
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        style={{ textAlign: 'center' }}
+        style={{ textAlign: 'center', marginTop: '2rem' }}
       >
-        <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 800, marginBottom: '1rem', fontFamily: "'Outfit', sans-serif" }}>
-          Loading Experience
-        </h2>
-        
         {/* Sleek loading bar */}
         <div style={{ width: '200px', height: '2px', background: 'rgba(0,0,0,0.1)', margin: '0 auto 1rem auto', overflow: 'hidden' }}>
-           <div style={{ height: '100%', width: `${loadedPercent}%`, background: '#000', transition: 'width 0.2s ease-out' }}></div>
-        </div>
-
-        <div style={{ fontSize: '1.2rem', color: '#888', letterSpacing: '0.1em', fontWeight: 600 }}>
-          {loadedPercent}%
+           <div style={{ height: '100%', width: `${loadedPercent}%`, background: 'var(--accent-teal)', transition: 'width 0.2s ease-out' }}></div>
         </div>
       </motion.div>
       
