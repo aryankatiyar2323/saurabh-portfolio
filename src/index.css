@@ -363,6 +363,14 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid rgba(255,255,255,0.1);
   margin-top: 10vh;
 }
+.mega-footer-grid {
+  display: flex;
+  justify-content: center;
+  gap: clamp(4rem, 10vw, 15rem);
+  text-align: left;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 4rem;
+}
 
 /* WhatsApp Float */
 .whatsapp-float {
@@ -504,9 +512,12 @@ h1, h2, h3, h4, h5, h6 {
     font-size: clamp(3rem, 12vw, 4rem) !important;
   }
   .mega-footer-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-    text-align: center;
+    flex-direction: column !important;
+    gap: 3rem !important;
+    text-align: center !important;
+  }
+  .mega-footer-grid .footer-col {
+    text-align: center !important;
   }
   .services-grid {
     grid-template-columns: 1fr !important;

@@ -475,12 +475,12 @@ function App() {
       {/* Mega Footer */}
       <footer className="footer mega-footer" style={{ padding: '8rem 5vw 2rem 5vw', background: 'var(--bg-color)', borderTop: '1px solid rgba(255,255,255,0.1)', marginTop: '0' }}>
         <div className="mega-footer-content container" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-           <a href="https://wa.me/918700322743" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', width: 'fit-content' }}>
+           <a href="https://wa.me/918700322743" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', width: '100%', textAlign: 'center' }}>
              <h2 className="mega-footer-title hover-target" style={{ fontSize: 'clamp(4rem, 8vw, 8rem)', lineHeight: 1, color: 'var(--text-primary)', transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent-teal)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
                HAVE A PROJECT<br/>IN MIND?
              </h2>
            </a>
-           <div className="mega-footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem', textAlign: 'left', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '4rem' }}>
+           <div className="mega-footer-grid">
               <div className="footer-col">
                  <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Contact</h4>
                  <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>contact@saurabhkatiyar.com</p>
