@@ -434,68 +434,52 @@ function App() {
 
       <Testimonials />
 
-      {/* Contact Section */}
-      <section id="contact" className="contact-section">
+      {/* Unified Mega Footer & Contact */}
+      <footer id="contact" className="footer mega-footer" style={{ padding: '8rem 5vw 2rem 5vw', background: 'var(--bg-color)', borderTop: '1px solid rgba(255,255,255,0.1)', marginTop: '10vh', position: 'relative', overflow: 'hidden' }}>
         <div className="circuit-pattern"></div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={revealVariants}
-        >
-          <h2 className="contact-title">
-            <AnimatedText text="Let's spark something" className="hover-target" /> <br />
-            <span style={{ color: 'var(--text-primary)' }}>
-              <AnimatedText text="Extraordinary" className="hover-target" />
-            </span>
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-            <a href="tel:+918700322743" className="contact-number hover-target" style={{ textDecoration: 'none' }}>
-              <AnimatedText text="+91 870 032 2743" className="hover-target" />
-            </a>
-            <a href="tel:+917976911880" className="contact-number hover-target" style={{ textDecoration: 'none' }}>
-              <AnimatedText text="+91 7976 911 880" className="hover-target" />
-            </a>
-          </div>
-          <div style={{ marginTop: '3rem' }}>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '1rem' }}>
-              <AnimatedText text="Available for major electrical contracts" className="hover-target" />
-            </p>
-            <button
-              onClick={() => setIsContactModalOpen(true)}
-              className="hover-target"
-              style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontSize: '1.5rem', background: 'transparent', border: 'none', cursor: 'none' }}
-            >
-              contact@saurabhkatiyar.com
-            </button>
-          </div>
-        </motion.div>
-      </section>
+        <div className="mega-footer-content container" style={{ display: 'flex', flexDirection: 'column', gap: '4rem', position: 'relative', zIndex: 1 }}>
+           
+           <motion.div
+             initial="hidden"
+             whileInView="visible"
+             viewport={{ once: true }}
+             variants={revealVariants}
+             style={{ textAlign: 'center' }}
+           >
+             <a href="https://wa.me/918700322743" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', width: '100%', textAlign: 'center', marginBottom: '3rem' }}>
+               <h2 className="mega-footer-title hover-target" style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', lineHeight: 1.1, color: 'var(--text-primary)', transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent-teal)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
+                 HAVE A PROJECT IN MIND?<br/>
+                 <span style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1.5rem, 3vw, 3rem)' }}>DON'T JUST KEEP IT THERE.</span><br/>
+                 <span style={{ color: 'var(--accent-teal)' }}>LET'S SPARK IT.</span>
+               </h2>
+             </a>
+             
+             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+               <a href="tel:+918700322743" className="contact-number hover-target" style={{ textDecoration: 'none' }}>
+                 <AnimatedText text="+91 870 032 2743" className="hover-target" />
+               </a>
+               <a href="tel:+917976911880" className="contact-number hover-target" style={{ textDecoration: 'none' }}>
+                 <AnimatedText text="+91 7976 911 880" className="hover-target" />
+               </a>
+             </div>
+           </motion.div>
 
-      {/* Mega Footer */}
-      <footer className="footer mega-footer" style={{ padding: '8rem 5vw 2rem 5vw', background: 'var(--bg-color)', borderTop: '1px solid rgba(255,255,255,0.1)', marginTop: '0' }}>
-        <div className="mega-footer-content container" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-          <a href="https://wa.me/918700322743" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', width: '100%', textAlign: 'center' }}>
-            <h2 className="mega-footer-title hover-target" style={{ fontSize: 'clamp(4rem, 8vw, 8rem)', lineHeight: 1, color: 'var(--text-primary)', transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent-teal)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
-              HAVE A PROJECT<br />IN MIND?
-            </h2>
-          </a>
-          <div className="mega-footer-grid">
-            <div className="footer-col">
-              <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Contact</h4>
-              <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>contact@saurabhkatiyar.com</p>
-              <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>+91 870 032 2743</p>
-              <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>+91 7976 911 880</p>
-            </div>
-            <div className="footer-col">
-              <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Location</h4>
-              <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Riddhi Siddhi, Mangal Vihar</p>
-              <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>Jaipur - 302018</p>
-            </div>
-          </div>
+           <div className="mega-footer-grid" style={{ marginTop: '2rem' }}>
+              <div className="footer-col">
+                 <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Contact</h4>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>contact@saurabhkatiyar.com</p>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>+91 870 032 2743</p>
+                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>+91 7976 911 880</p>
+              </div>
+              <div className="footer-col">
+                 <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Location</h4>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Riddhi Siddhi, Mangal Vihar</p>
+                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>Jaipur - 302018</p>
+              </div>
+           </div>
         </div>
-        <div className="footer-bottom" style={{ textAlign: 'center', marginTop: '6rem', color: 'var(--text-secondary)' }}>
-          <p>© {new Date().getFullYear()} Saurabh Katiyar. All Rights Reserved.</p>
+        <div className="footer-bottom" style={{ textAlign: 'center', marginTop: '6rem', color: 'var(--text-secondary)', position: 'relative', zIndex: 1 }}>
+           <p>© {new Date().getFullYear()} Saurabh Katiyar. All Rights Reserved.</p>
         </div>
       </footer>
 
