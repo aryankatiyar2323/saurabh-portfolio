@@ -372,36 +372,14 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 4rem;
 }
 
-/* WhatsApp Float */
-.whatsapp-float {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 60px;
-  height: 60px;
-  background-color: rgba(15, 15, 15, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--accent-teal);
-  color: var(--accent-teal);
+/* WhatsApp Inline Pulse */
+.pulse-wa-theme-inline {
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
-  z-index: 9999;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  animation: pulse-wa-theme 3s infinite;
+  animation: pulse-wa-inline 2s infinite;
 }
-.whatsapp-float:hover {
-  transform: scale(1.1) rotate(-5deg);
-  background-color: var(--accent-teal);
-  color: #000;
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.6);
-  animation: none;
-}
-@keyframes pulse-wa-theme {
-  0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.3); }
-  70% { box-shadow: 0 0 0 15px rgba(0, 229, 255, 0); }
+@keyframes pulse-wa-inline {
+  0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 229, 255, 0); }
   100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
 }
 
@@ -498,12 +476,6 @@ h1, h2, h3, h4, h5, h6 {
   }
   .project-content {
     padding: 2rem;
-  }
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    bottom: 1rem;
-    right: 1rem;
   }
   .modal-glow {
     display: none;
