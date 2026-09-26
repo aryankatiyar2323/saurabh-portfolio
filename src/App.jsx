@@ -478,7 +478,7 @@ function App() {
            <h2 className="mega-footer-title hover-target" style={{ fontSize: 'clamp(4rem, 8vw, 8rem)', lineHeight: 1, color: 'var(--text-primary)', transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent-teal)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
              HAVE A PROJECT<br/>IN MIND?
            </h2>
-           <div className="mega-footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', textAlign: 'left', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '4rem' }}>
+           <div className="mega-footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem', textAlign: 'left', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '4rem' }}>
               <div className="footer-col">
                  <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Contact</h4>
                  <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>contact@saurabhkatiyar.com</p>
@@ -487,14 +487,8 @@ function App() {
               </div>
               <div className="footer-col">
                  <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Location</h4>
-                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>124 Industrial Area</p>
-                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Sector 5, New Delhi</p>
-                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>India - 110001</p>
-              </div>
-              <div className="footer-col">
-                 <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Business Details</h4>
-                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>GSTIN: 07AAECE1234B1Z5</p>
-                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>Lic No: EL-998822</p>
+                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Riddhi Siddhi, Mangal Vihar</p>
+                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>Jaipur - 302018</p>
               </div>
            </div>
         </div>
