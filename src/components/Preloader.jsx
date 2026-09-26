@@ -46,7 +46,7 @@ export default function Preloader({ onComplete }) {
         layoutId="hero-title"
         style={{ margin: 0, textAlign: 'center', color: '#fff', position: 'relative', zIndex: 2 }}
       >
-        <AnimatedText text="SAURABH" className="hover-target" /> <br /> <AnimatedText text="KATIYAR" className="hover-target" />
+        <AnimatedText text="HIGH-VOLTAGE" className="hover-target" /> <br /> <AnimatedText text="EXCELLENCE" className="hover-target" />
       </motion.h1>
 
       <motion.div 
