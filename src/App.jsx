@@ -64,7 +64,7 @@ const ProjectItem = ({ src, title, category, description, Icon }) => {
     target: ref,
     offset: ["start end", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   // 3D Tilt Logic
@@ -85,7 +85,7 @@ const ProjectItem = ({ src, title, category, description, Icon }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -103,19 +103,19 @@ const ProjectItem = ({ src, title, category, description, Icon }) => {
         {/* Layer 1: Clipped Background and Gradient */}
         <div className="project-layer-bg">
           <div className="project-image-wrapper">
-            <motion.img 
-              src={src} 
-              alt={title} 
-              className="project-image" 
-              style={{ y, scale: 1.15 }} 
+            <motion.img
+              src={src}
+              alt={title}
+              className="project-image"
+              style={{ y, scale: 1.15 }}
             />
           </div>
           <div className="project-overlay"></div>
         </div>
-        
+
         {/* Layer 2: 3D Text Content */}
         <div className="project-content" style={{ transform: "translateZ(60px)" }}>
-          <span className="project-category"><Icon size={16} style={{display:'inline', marginRight:'8px'}}/> {category}</span>
+          <span className="project-category"><Icon size={16} style={{ display: 'inline', marginRight: '8px' }} /> {category}</span>
           <h3 className="project-title">{title}</h3>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', fontSize: '1.1rem', lineHeight: '1.5' }}>
             {description}
@@ -132,26 +132,26 @@ const Services = () => (
       <h2>Our <span style={{ color: 'var(--accent-teal)' }}>Services</span></h2>
     </div>
     <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem' }}>
-       <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
-         <Zap size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
-         <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Residential Wiring</h4>
-         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Complete home automation and safe residential grid setup.</p>
-       </div>
-       <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
-         <Building2 size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
-         <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Commercial Panels</h4>
-         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Heavy-duty electrical panels and commercial grade distribution.</p>
-       </div>
-       <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
-         <HardHat size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
-         <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Industrial Maintenance</h4>
-         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>24/7 industrial maintenance to prevent factory downtime.</p>
-       </div>
-       <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
-         <Power size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
-         <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Smart Lighting</h4>
-         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Architectural lighting and smart home ecosystem integrations.</p>
-       </div>
+      <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
+        <Zap size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
+        <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Residential Wiring</h4>
+        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Complete home automation and safe residential grid setup.</p>
+      </div>
+      <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
+        <Building2 size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
+        <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Commercial Panels</h4>
+        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Heavy-duty electrical panels and commercial grade distribution.</p>
+      </div>
+      <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
+        <HardHat size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
+        <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Industrial Maintenance</h4>
+        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>24/7 industrial maintenance to prevent factory downtime.</p>
+      </div>
+      <div className="service-card hover-target" style={{ padding: '2.5rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 229, 255, 0.1)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}>
+        <Power size={40} color="var(--accent-teal)" style={{ marginBottom: '1.5rem' }} />
+        <h4 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Smart Lighting</h4>
+        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>Architectural lighting and smart home ecosystem integrations.</p>
+      </div>
     </div>
   </section>
 );
@@ -177,7 +177,7 @@ const Testimonials = () => {
         <h2>Client <span style={{ color: 'var(--accent-teal)' }}>Reviews</span></h2>
       </div>
       <motion.div ref={carousel} className="carousel-wrapper hover-target" style={{ overflow: "hidden", cursor: "grab" }} whileTap={{ cursor: "grabbing" }}>
-        <motion.div 
+        <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
           style={{ display: "flex", gap: "2rem" }}
@@ -196,7 +196,7 @@ const Testimonials = () => {
 
 const WhatsAppIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
   </svg>
 );
 
@@ -206,7 +206,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showWhatsApp, setShowWhatsApp] = useState(false);
   const [isLightMode, setIsLightMode] = useState(false);
-  
+
   useEffect(() => {
     if (isLightMode) {
       document.body.classList.add('light-mode');
@@ -214,7 +214,7 @@ function App() {
       document.body.classList.remove('light-mode');
     }
   }, [isLightMode]);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
@@ -228,7 +228,7 @@ function App() {
         setShowWhatsApp(false);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -292,7 +292,7 @@ function App() {
           animate={!isLoading ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
           transition={{ duration: 1, ease: 'easeOut' }}
         >
-          <motion.h2 
+          <motion.h2
             className="hero-subtitle"
             initial={{ opacity: 0, y: 20 }}
             animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -300,7 +300,7 @@ function App() {
           >
             <AnimatedText text="Premier Electrical Contractor" className="hover-target" />
           </motion.h2>
-          <motion.h1 
+          <motion.h1
             className="hero-title"
             layoutId="hero-title"
             initial={{ opacity: 0 }}
@@ -315,12 +315,12 @@ function App() {
             transition={{ delay: 1, duration: 0.8 }}
             style={{ marginTop: '2rem' }}
           >
-            <MagneticButton 
+            <MagneticButton
               onClick={() => setIsContactModalOpen(true)}
               className="hover-target"
-              style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
                 gap: '10px',
                 textDecoration: 'none',
                 color: 'var(--accent-color)',
@@ -341,7 +341,7 @@ function App() {
 
       {/* Marquee Banner */}
       <div className="marquee-container">
-        <motion.div 
+        <motion.div
           className="marquee-content"
           animate={{ x: [0, -1035] }}
           transition={{ repeat: Infinity, duration: 15, ease: 'linear' }}
@@ -361,7 +361,7 @@ function App() {
       <section className="section container">
         <div className="circuit-pattern"></div>
         <div className="about-grid" style={{ display: 'flex', justifyContent: 'center' }}>
-          <motion.div 
+          <motion.div
             className="about-text"
             initial="hidden"
             whileInView="visible"
@@ -378,7 +378,7 @@ function App() {
             <p style={{ fontSize: '1.5rem' }}>
               Specializing in complex, high-stakes environments like major hotels, multi-story residential societies, and large-scale factories, we deliver safety, precision, and unparalleled expertise.
             </p>
-            
+
             <div className="stats" style={{ justifyContent: 'center', marginTop: '4rem' }}>
               <div className="stat-item">
                 <h3><Counter from={0} to={20} suffix="+" /></h3>
@@ -397,32 +397,32 @@ function App() {
 
       {/* Projects Showcase */}
       <section className="section container">
-        <motion.div 
+        <motion.div
           className="projects-header"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={revealVariants}
         >
-          <h2>Featured <br/> <span style={{ color: 'var(--accent-blue)' }}>Expertise</span></h2>
+          <h2>Featured <br /> <span style={{ color: 'var(--accent-blue)' }}>Expertise</span></h2>
         </motion.div>
 
         <div className="project-list">
-          <ProjectItem 
+          <ProjectItem
             src="/images/hotel.jpg"
             title="Hotel Contracts"
             category="Hospitality Infrastructure"
             description="Executing sophisticated electrical infrastructure for luxury hotels. Ensuring seamless power delivery, elegant architectural lighting, and absolute reliability for guest experiences."
             Icon={Building2}
           />
-          <ProjectItem 
+          <ProjectItem
             src="/images/multistory.jpg"
             title="Multi-Story Contracts"
             category="Urban Development"
             description="Comprehensive electrical planning and execution for large-scale multi-story buildings and residential societies. Delivering modern, smart-home ready infrastructure for thousands of residents."
             Icon={Building2}
           />
-          <ProjectItem 
+          <ProjectItem
             src="/images/factory.jpg"
             title="Factory Contracts"
             category="Industrial Power"
@@ -444,8 +444,8 @@ function App() {
           variants={revealVariants}
         >
           <h2 className="contact-title">
-            <AnimatedText text="Let's spark something" className="hover-target" /> <br/> 
-            <span style={{ color: 'var(--text-primary)'}}>
+            <AnimatedText text="Let's spark something" className="hover-target" /> <br />
+            <span style={{ color: 'var(--text-primary)' }}>
               <AnimatedText text="Extraordinary" className="hover-target" />
             </span>
           </h2>
@@ -461,9 +461,9 @@ function App() {
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '1rem' }}>
               <AnimatedText text="Available for major electrical contracts" className="hover-target" />
             </p>
-            <button 
+            <button
               onClick={() => setIsContactModalOpen(true)}
-              className="hover-target" 
+              className="hover-target"
               style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontSize: '1.5rem', background: 'transparent', border: 'none', cursor: 'none' }}
             >
               contact@saurabhkatiyar.com
@@ -475,35 +475,35 @@ function App() {
       {/* Mega Footer */}
       <footer className="footer mega-footer" style={{ padding: '8rem 5vw 2rem 5vw', background: 'var(--bg-color)', borderTop: '1px solid rgba(255,255,255,0.1)', marginTop: '0' }}>
         <div className="mega-footer-content container" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-           <a href="https://wa.me/918700322743" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', width: '100%', textAlign: 'center' }}>
-             <h2 className="mega-footer-title hover-target" style={{ fontSize: 'clamp(4rem, 8vw, 8rem)', lineHeight: 1, color: 'var(--text-primary)', transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent-teal)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
-               HAVE A PROJECT<br/>IN MIND?
-             </h2>
-           </a>
-           <div className="mega-footer-grid">
-              <div className="footer-col">
-                 <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Contact</h4>
-                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>contact@saurabhkatiyar.com</p>
-                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>+91 870 032 2743</p>
-                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>+91 7976 911 880</p>
-              </div>
-              <div className="footer-col">
-                 <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Location</h4>
-                 <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Riddhi Siddhi, Mangal Vihar</p>
-                 <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>Jaipur - 302018</p>
-              </div>
-           </div>
+          <a href="https://wa.me/918700322743" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', width: '100%', textAlign: 'center' }}>
+            <h2 className="mega-footer-title hover-target" style={{ fontSize: 'clamp(4rem, 8vw, 8rem)', lineHeight: 1, color: 'var(--text-primary)', transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent-teal)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
+              HAVE A PROJECT<br />IN MIND?
+            </h2>
+          </a>
+          <div className="mega-footer-grid">
+            <div className="footer-col">
+              <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Contact</h4>
+              <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>contact@saurabhkatiyar.com</p>
+              <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>+91 870 032 2743</p>
+              <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>+91 7976 911 880</p>
+            </div>
+            <div className="footer-col">
+              <h4 style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>Location</h4>
+              <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Riddhi Siddhi, Mangal Vihar</p>
+              <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>Jaipur - 302018</p>
+            </div>
+          </div>
         </div>
         <div className="footer-bottom" style={{ textAlign: 'center', marginTop: '6rem', color: 'var(--text-secondary)' }}>
-           <p>© {new Date().getFullYear()} Saurabh Katiyar. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Saurabh Katiyar. All Rights Reserved.</p>
         </div>
       </footer>
 
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
 
       {/* Theme Toggle Button */}
-      <button 
-        onClick={() => setIsLightMode(!isLightMode)} 
+      <button
+        onClick={() => setIsLightMode(!isLightMode)}
         className="theme-toggle hover-target"
         aria-label="Toggle Theme"
       >
@@ -513,9 +513,9 @@ function App() {
       {/* Floating WhatsApp Button */}
       <AnimatePresence>
         {showWhatsApp && (
-          <motion.a 
-            href="https://wa.me/918700322743" 
-            target="_blank" 
+          <motion.a
+            href="https://wa.me/918700322743"
+            target="_blank"
             rel="noopener noreferrer"
             className="whatsapp-float hover-target"
             aria-label="Chat on WhatsApp"
